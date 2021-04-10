@@ -1,7 +1,8 @@
 // run server
 const WebpackDevServer = require('webpack-dev-server'); // Server服务
 const webpack = require('webpack');
-const config = require('../webpack/webpack.dev.js')({});
+const yfanEnv = require(`${process.cwd()}/yfan.env.js`) || {}; // 外部env
+const config = require('../webpack/webpack.dev.js')(yfanEnv);
 const devServerOptions = Object.assign({}, config.devServer);
 
 module.exports = function() {

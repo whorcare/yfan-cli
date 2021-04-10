@@ -5,7 +5,8 @@ const merge = require('webpack-merge');
 const VConsolePlugin = require('vconsole-webpack-plugin');
 const common = require('./webpack.common');
 
-module.exports = function() {
+module.exports = function(yfanConfig = {}) {
+    console.log(yfanConfig);
     return merge(common, {
         mode: 'development',
         devtool: 'source-map', // dev调试打包代码
@@ -26,7 +27,7 @@ module.exports = function() {
                 open: true,
                 stats: 'errors-only', // 报错输出
             },
-            {}
+            yfanConfig
         ),
         plugins: [
             new webpack.DefinePlugin({
